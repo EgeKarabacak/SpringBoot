@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <head><title>Create Deliverable</title>
+    </head>
+
+    <header class="masthead container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container" style ="background-color:rgb(212, 55, 55); padding-bottom: 1px;" >
+              <h1>Create Deliverable</h1>
+            </div>
+            <p><a style="position: absolute;right:650;top:10"action="/" class="btn btn-dark btn-sm" href="/" role="button">Home</a></p>
+          </div>
+      </header>
+
+<body>
+    <div class="container">
+        <div class="colspan">
+
+    <form th:object="${deliverable}" action="createdeliverable" method="post">
+        <div class="col-7">
+        <label for="type">Type:</label><br>
+        <select class="form-select" name="type" id="type" required=true>
+            <option value="Quiz">Assignment</option>
+            <option value="Attendance">Attendance</option>
+        </select><br>
+        </div>
+
+        <div class = "form-group">
+            <div class="col-7">
+        <label for="requirements">Requirements:</label><br>
+        <input class = "form-control" type="text" id="requirements" name="requirements" placeholder="Requirements" required=true><br>
+        </div>
+        </div>
+
+        <div class = "form-group">
+            <div class="col-7">
+            <label for="opendate">Open Time:</label><br>
+            <input class = "form-control" type="datetime-local" id="opendate" name="opendate" required=true placeholder="2011-08-19T13:45:00"><br>
+            </div>
+        </div>
+
+        <div class = "form-group">
+            <div class="col-7">
+            <label for="deadline">Close Date:</label><br>
+            <input class = "form-control" type="datetime-local" id="deadline" name="deadline" required=true placeholder="2011-08-19T13:45:00"><br>
+            </div>
+        </div>
+       
+        <div class = "form-group">
+            <div class="col-7">
+            <label for="maxgrade">Max grade:</label><br>
+            <input class= "form-control" type="number" id="maxgrade" value = "0" name="maxgrade" required=true placeholder="0"><br>
+            </div>
+        </div>
+
+        <input type="hidden" name="cid" th:value="${course.getId()}" >
+
+        <input class="btn btn-secondary" type="submit" value="Create deliverable"/>
+    </form>
+
+
+    <form th:action="@{/logout}" method="post">
+        <input class ="btn btn-danger" type="submit" value="Sign Out"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+UserID -> Username, Password
+SID -> FirstName, LastName, CurrentCourses, CompletedCourses, Birthday, Notifications
+PID -> FirstName, LastName, CoursesTaught, PastCourses
+CID -> Name, Location, Section, Term, Cap, Prof, Time, Students, Deliverables
+SID, CID -> FinalGrades
+DID -> Requirements, MaxGrade, OpenDate, Deadline
+SID, DID -> DeliverableGrade
+
+Table 1:
+Users
+*UID* Username Password
+
+Table 2:
+Students
+*UID* FirstName LastName Birthday
+F-Key UID
+
+Table 3:
+Professors
+*UID* FirstName LastName
+F-Key UID
+
+Table 4:
+Courses
+*CID* Name Location Section Term Cap Time
+
+Table 5:
+Deliverables
+*DID* CID MaxGrade OpenDate DeadLine
+F-Key CID
+
+Table 6:
+User-Course
+*UID* *CID* Active
+F-Key UID
+F-Key CID
+NOTE: Active = true means current
+      Active = false means past
+Can sperate students from profs by joining on table 2 or 3 respectively
+
+Table 7:
+CourseGrades
+*UID* *CID* Grade
+F-Key UID
+F-Key CID
+
+Table 8:
+DeliverableGrades
+*UID* *DID* Grade
+F-Key UID
+F-Key DID
